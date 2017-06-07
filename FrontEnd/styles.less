@@ -1,0 +1,70 @@
+@background-color:#2a2d30;
+@text-color:#f0efec;
+@font-family:sans-serif;
+@gutter: 20px;
+@contentPad: 10px;
+
+body, .theme, .test, .backdrop{
+    background-color: @background-color;
+    font-family:@font-family;
+}
+
+p,li,h1,h2,h3{
+    color:@text-color;
+    font-family:@font-family
+}
+
+.container{
+	border:3px @text-color;
+	background: @background-color;
+	margin:0 auto;
+	display: block;
+}
+
+.mainContent{
+	background-color: @background-color;
+	float:left;
+	padding:@contentPad;
+	max-width:700px;
+}
+
+#responsiveLayout {
+	.set(@availableW) {
+
+		@contentW : @availableW -  @gutter + (@contentPad * 2);
+
+		.container{
+			width:@availableW;
+		}
+
+		.mainContent{
+			width: @contentW;
+		}
+	}
+}
+
+#responsiveLayout > .set(768px);
+
+@media (max-width: 599px) {
+	#responsiveLayout > .set(400px);
+}
+
+@media (min-width: 600px) and (max-width: 767px) {
+	#responsiveLayout > .set(600px);
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+		#header{
+		width:50%;
+		float:"right";
+	}
+	#responsiveLayout > .set(768px);
+}
+
+@media (min-width: 1000) {
+		#header{
+		width:50%;
+		float:"right";
+	}
+	#responsiveLayout > .set(1200px);
+}
